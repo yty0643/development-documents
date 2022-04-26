@@ -1,16 +1,16 @@
-# [VAC] pattern
+# VAC pattern
 
 어플리케이션의 원활한 유지보수와 디자이너, FE개발자 간의 원활한 협업(코드 충돌 방지)을 위해 디자인 패턴을 참고하여 설계하고자 한다.
-또한 [react-vac] 를 활용하여 개발 하고자 한다. [react-vac] 컴포넌트는 View(JSX) 없이 컴포넌트를 개발할 수 있도록 도와주는 디버깅 도구로, VAC Pattern 개발 을 위한 최적의 솔루션을 제공한다.
+또한 `react-vac`를 활용하여 개발 하고자 한다. `react-vac`컴포넌트는 View(JSX) 없이 컴포넌트를 개발할 수 있도록 도와주는 디버깅 도구로, VAC Pattern 개발 을 위한 최적의 솔루션을 제공한다.
 
 > yarn add react-vac --dev
 
-여러 패턴 중 [VAC] 패턴을 채택하여 개발하고자 한다.
-[VAC] 는 View Asset Component의 약자로 렌더링에 필요한 JSX와 스타일을 관리하는 컴포넌트를 의미한다.
-[VAC] 패턴은 View 컴포넌트에서 JSX 영역을 Props Object로 추상화하고, JSX를 [VAC]로 분리해서 개발하는 설계 방법이다.
+여러 패턴 중 `VAC`패턴을 채택하여 개발하고자 한다.
+`VAC`는 View Asset Component의 약자로 렌더링에 필요한 JSX와 스타일을 관리하는 컴포넌트를 의미한다.
+`VAC`패턴은 View 컴포넌트에서 JSX 영역을 Props Object로 추상화하고, JSX를 `VAC`로 분리해서 개발하는 설계 방법이다.
 이런 설계는 비즈니스 로직 뿐만 아니라 UI 기능 같은 View 로직에서도 렌더링 관심사를 분리하는데 목적이 있다.
 
-[VAC] 는 다음과 같은 특징을 가지고 있다.
+`VAC`는 다음과 같은 특징을 가지고 있다.
 
 - 반복이나 조건부 노출, 스타일 제어와 같은 렌더링과 관련된 처리만을 수행한다.
 - 오직props를 통해서만 제어되며 스스로의 상태를 관리하거나 변경하지 않는 stateless 컴포넌트이다.
@@ -19,7 +19,7 @@
 VAC pattern
 ![vac_pattern_s1](https://user-images.githubusercontent.com/80657819/164623685-acf58bde-463a-47ff-b219-167c66252bc5.png)
 
-[VAC]는 state를 가질 수 없지만 state를 가진 컴포넌트를 자식으로 가지는 것은 가능합니다. 이 경우 [VAC]는 부모 컴포넌트와 자식 컴포넌트 중간에서 개입하지 않고 단순히 props를 전달하는 역할만 한다.
+`VAC`는 state를 가질 수 없지만 state를 가진 컴포넌트를 자식으로 가지는 것은 가능합니다. 이 경우 `VAC`는 부모 컴포넌트와 자식 컴포넌트 중간에서 개입하지 않고 단순히 props를 전달하는 역할만 한다.
 
 # 구현 예제
 
@@ -64,8 +64,8 @@ const SpinBox = () => {
 
 ## JSX를 VAC로 분리
 
-JSX영역을 분리하여 VAC로 만듭니다. 이때 View 컴포넌트에 생성한 Props Object 속성을 참고하여 VAC의 Props를 정의합니다.
-반대로 이미 만들어진 VAC를 View 컴포넌트에 적용할 때는 VAC의 Props를 참고하여 View 컴포넌트의 Props Object 속성을 정의합니다.
+JSX영역을 분리하여 `VAC`로 만듭니다. 이때 View 컴포넌트에 생성한 Props Object 속성을 참고하여 `VAC`의 Props를 정의합니다.
+반대로 이미 만들어진 `VAC`를 View 컴포넌트에 적용할 때는 `VAC`의 Props를 참고하여 View 컴포넌트의 Props Object 속성을 정의합니다.
 
 ```javascript
 // VAC
