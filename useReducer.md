@@ -78,3 +78,6 @@ function Counter() {
 ```
 
 useState, useReducer 상황에맞게 선택해서 사용하면 될것이다.
+
+- 참고문헌
+  <https://react.vlpt.us/basic/20-useReducer.html>
