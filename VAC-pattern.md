@@ -1,6 +1,7 @@
 # VAC pattern
 
 어플리케이션의 원활한 유지보수와 디자이너, FE개발자 간의 원활한 협업(코드 충돌 방지)을 위해 디자인 패턴을 참고하여 설계하고자 한다.
+
 또한 `react-vac`를 활용하여 개발 하고자 한다. `react-vac`컴포넌트는 View(JSX) 없이 컴포넌트를 개발할 수 있도록 도와주는 디버깅 도구로, VAC Pattern 개발 을 위한 최적의 솔루션을 제공한다.
 
 > yarn add react-vac --dev
@@ -101,7 +102,8 @@ const SpinBox = () => {
 FE개발자는 View component 에서 개발을 진행하고
 UI개발자는 VAC에서 개발을 진행해서 둘의 코드 중복을 피할 수 있다.
 
-- 참고문헌
-  <https://tv.naver.com/v/23162062>
-  <https://wit.nts-corp.com/2021/08/11/6461>
-  <https://www.npmjs.com/package/react-vac>
+## 참고문헌
+
+- <https://tv.naver.com/v/23162062>
+- <https://wit.nts-corp.com/2021/08/11/6461>
+- <https://www.npmjs.com/package/react-vac>
