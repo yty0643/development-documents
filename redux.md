@@ -152,6 +152,6 @@ function counter(state, action) {
 
 ## 참고문헌
 
-(https://react.vlpt.us/redux/)
-(https://velopert.com/3528)
-(https://ridicorp.com/story/how-to-use-redux-in-ridi/)
+(https://react.vlpt.us/redux/)<br/>
+(https://velopert.com/3528)<br/>
+(https://ridicorp.com/story/how-to-use-redux-in-ridi/)<br/>
