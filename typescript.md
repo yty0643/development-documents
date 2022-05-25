@@ -2,7 +2,8 @@
 
 typescript와 함께 프로젝트 생성하는 방법
 
-`npx create-react-app ts-react-tutorial --typescript`
+~~npx create-react-app ts-react-tutorial --typescript~~
+`npx create-react-app <appname> --template=typescript`
 
 프로젝트에 typescript 추가 방법
 

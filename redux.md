@@ -1,5 +1,8 @@
 # 리덕스(Redux)
 
+현업에서 그리고 많은 개발자들이 리덕스를 사용하고 있기 때문에 리덕스를 공부하고자 한다.
+프로젝트에 적용하기 앞서 왜 리덕스를 사용하는지, 리덕스의 컨셉과 특징이 무엇인지에 대해 공부하고 기록하고자한다.
+
 ---
 
 ## 리덕스란?
@@ -146,3 +149,9 @@ function counter(state, action) {
 구독 또한 스토어의 내장함수 중 하나로, 함수 형태의 값을 파라미터로 받아온다. `subscribe` 함수에 특정 함수를 전달해주면, 액션이 디스패치 되었을 때 마다 전달해준 함수가 호출된다.
 
 리액트에서 리덕스를 사용하게 될 때 보통 이 함수를 직접 사용하는 일은 별로 없다. 그 대신에 `react-redux` 라는 라이브러리에서 제공하는 `connect` 함수 또는 `useSelector Hook` 을 사용하여 리덕스 스토어의 상태에 구독한다.
+
+## 참고문헌
+
+(https://react.vlpt.us/redux/)
+(https://velopert.com/3528)
+(https://ridicorp.com/story/how-to-use-redux-in-ridi/)
