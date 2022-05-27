@@ -152,6 +152,164 @@ function counter(state, action) {
 
 ---
 
+## 예제 (리덕스 모듈 만들기)
+
+리덕스를 타입스크립트와 함께 사용하고, 마우스 호버에 대한 상태를 리덕스 모듈로 작성하는 기본적인 예제를 직접 작성해 보았다.
+
+리덕스를 모듈로 나누어 개발할 때는 `modules`라는 폴더 안에 각각의 모듈을 작성하고, `modules/index.ts`안에 `rootReducer`를 작성하면 된다.
+
+> 주석을 잘 읽어보길 바란다.
+
+### index.tsx
+
+```typescript
+// 한개의 앱에 하나의 스토어만 사용한다.
+const store = createStore(rootReducer);
+
+// 리액트와 리덕스로 개발할 때는 App을 Provider로 감싸주고 props로 store를 전달한다.
+root.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>
+);
+```
+
+### modules/hover.ts
+
+```typescript
+// 뒤에 as const 를 붙여줌으로써 나중에 액션 객체를 만들게 action.type 의 값을 추론하는 과정에서
+// action.type 이 string 으로 추론되지 않고 'counter/INCREASE' 와 같이 실제 문자열 값으로 추론 되도록 해준다.
+const MOUSE_ENTER = "hover/MOUSE_ENTER" as const;
+const MOUSE_LEAVE = "hover/MOUSE_LEAVE" as const;
+
+// 액션 생성함수의 부가적인 데이터 payload 통일
+// 이는 FSA (https://github.com/redux-utilities/flux-standard-action) 라는 규칙이다.
+export const mouseEnter = () => ({
+  type: MOUSE_ENTER,
+  // payload:{
+
+  // },
+});
+
+export const mouseLeave = () => ({
+  type: MOUSE_LEAVE,
+});
+
+// 모든 액션 겍체들에 대한 타입
+// ReturnType<typeof _____> 는 특정 함수의 반환값을 추론한다.
+// 상단부에서 액션타입을 선언 할 떄 as const 를 하지 않으면 이 부분이 제대로 작동하지 않는다.
+type hoverAction =
+  | ReturnType<typeof mouseEnter>
+  | ReturnType<typeof mouseLeave>;
+
+const initialState = {
+  isHover: false,
+  msg: "",
+};
+
+// 초기상태 선언
+type hoverState = {
+  isHover: boolean;
+  msg: string;
+};
+
+// 리듀서 작성
+// 리듀서에서는 state 와 함수의 반환값이 일치하도록 작성한다.
+// 액션에서는 우리가 방금 만든 CounterAction 을 타입으로 설정한다.
+const hover = (
+  state: hoverState = initialState,
+  action: hoverAction
+): hoverState => {
+  switch (action.type) {
+    case MOUSE_ENTER:
+      return {
+        isHover: true,
+        msg: "mouse enter!",
+      };
+    case MOUSE_LEAVE:
+      return {
+        isHover: false,
+        msg: "mouse leave!",
+      };
+    default:
+      return state;
+  }
+};
+
+export default hover;
+```
+
+### modules/index.ts
+
+```typescript
+import { combineReducers } from "redux";
+import hover from "./hover";
+
+const rootReducer = combineReducers({
+  hover,
+});
+
+// 루트 리듀서를 내보내기.
+export default rootReducer;
+
+// 루트 리듀서의 반환값를 유추한다.
+// 추후 이 타입을 컨테이너 컴포넌트에서 불러와서 사용해야 하므로 내보내준다.
+export type RootState = ReturnType<typeof rootReducer>;
+```
+
+### components/test.tsx
+
+```typescript
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../modules";
+import { mouseEnter, mouseLeave } from "../modules/hover";
+import styles from "./test.module.css";
+
+const Test = () => {
+  // 랜더링체크를 위한 로그.
+  console.log("Rendering!");
+
+  // 상태를 조회합니다. 상태를 조회 할 때에는 state 의 타입을 RootState 로 지정해야합니다.
+  const { isHover, msg } = useSelector((state: RootState) => ({
+    ...state.hover,
+  }));
+  // 디스패치 함수를 가져온다.
+  const dispatch = useDispatch();
+
+  // 각 액션들을 디스패치하는 함수들을 만들어준다.
+  const onMouseEnter = () => {
+    dispatch(mouseEnter());
+  };
+
+  const onMouseLeave = () => {
+    dispatch(mouseLeave());
+  };
+
+  // 어떻게 반응하는지 알아보기 위해 작성된 로그
+  useEffect(() => {
+    console.log(isHover);
+    console.log(msg);
+  });
+
+  // 이부분은 따로 리덕스 프레젠테이셔널/컨테이너 컴포넌트 두가지로 분리해서 작성해도 되는데
+  // 개발할때 번거로울 것으로 판단되어 한 파일에 작성했다. (공식문서에서 굳이 분리할 필요 없다고 함)
+  return (
+    <div
+      className={styles.box}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    ></div>
+  );
+};
+
+export default React.memo(Test);
+```
+
+---
+
 ## 참고문헌
 
 (https://react.vlpt.us/redux/)<br/>
