@@ -48,7 +48,8 @@ yarn add @reduxjs/toolkit
 
 # RTK 예제
 
-이전 리덕스 문서에서 다루었던 예제를 RTK를 이용해 리팩토링 하는 과정을 기록했다.
+이전 [리덕스](https://github.com/yty0643/development-documents/blob/main/redux.md)에서 다루었던 예제를 RTK를 이용해 리팩토링 하는 과정을 기록했다.<br/>
+리팩토링 전, 후의 코드를 보면 보일러플레이트가 줄어든 모습이 한눈에 들어온다.
 
 ## modules/index.ts
 
