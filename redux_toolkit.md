@@ -36,12 +36,12 @@ yarn add @reduxjs/toolkit
 
 # RTK 키워드
 
-- configureStore()createStore: 단순화된 구성 옵션과 좋은 기본값을 제공하기 위해 래핑 합니다. 슬라이스 리듀서를 자동으로 결합하고, 제공하는 모든 Redux 미들웨어를 추가하고, redux-thunk기본적으로 포함하고, Redux DevTools Extension을 사용할 수 있습니다.
-- createReducer(): switch 문을 작성하는 대신 대소문자 감소 함수에 작업 유형의 조회 테이블을 제공할 수 있습니다. 또한 immer라이브러리 를 자동으로 사용하여 state.todos[3].completed = true.
-- createAction(): 주어진 액션 유형 문자열에 대한 액션 생성자 함수를 생성합니다. 함수 자체가 toString()정의되어 있으므로 형식 상수 대신 사용할 수 있습니다.
-- createSlice(): 리듀서 함수의 객체, 슬라이스 이름, 초기 상태 값을 받아들이고 해당 액션 생성자와 액션 유형으로 슬라이스 리듀서를 자동으로 생성합니다.
-- createAsyncThunk: 작업 유형 문자열과 약속을 반환하는 함수를 수락하고 pending/fulfilled/rejected해당 약속을 기반으로 작업 유형 을 전달하는 썽크를 생성합니다.
-- createEntityAdapter: 저장소에서 정규화된 데이터를 관리하기 위해 재사용 가능한 리듀서 및 선택기 세트를 생성합니다.
+- **configureStore()createStore**: 단순화된 구성 옵션과 좋은 기본값을 제공하기 위해 래핑 합니다. 슬라이스 리듀서를 자동으로 결합하고, 제공하는 모든 Redux 미들웨어를 추가하고, redux-thunk기본적으로 포함하고, Redux DevTools Extension을 사용할 수 있습니다.
+- **createReducer()**: switch 문을 작성하는 대신 대소문자 감소 함수에 작업 유형의 조회 테이블을 제공할 수 있습니다. 또한 immer라이브러리 를 자동으로 사용하여 state.todos[3].completed = true.
+- **createAction()**: 주어진 액션 유형 문자열에 대한 액션 생성자 함수를 생성합니다. 함수 자체가 toString()정의되어 있으므로 형식 상수 대신 사용할 수 있습니다.
+- **createSlice()**: 리듀서 함수의 객체, 슬라이스 이름, 초기 상태 값을 받아들이고 해당 액션 생성자와 액션 유형으로 슬라이스 리듀서를 자동으로 생성합니다.
+- **createAsyncThunk**: 작업 유형 문자열과 약속을 반환하는 함수를 수락하고 pending/fulfilled/rejected해당 약속을 기반으로 작업 유형 을 전달하는 썽크를 생성합니다.
+- **createEntityAdapter**: 저장소에서 정규화된 데이터를 관리하기 위해 재사용 가능한 리듀서 및 선택기 세트를 생성합니다.
   Reselect 라이브러리 의 createSelector유틸리티 는 사용하기 쉽도록 다시 내보냅니다.
 
 ---
