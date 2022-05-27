@@ -272,7 +272,7 @@ const Test = () => {
   // 랜더링체크를 위한 로그.
   console.log("Rendering!");
 
-  // 상태를 조회합니다. 상태를 조회 할 때에는 state 의 타입을 RootState 로 지정해야합니다.
+  // 상태를 조회한다. 상태를 조회 할 때에는 state 의 타입을 RootState 로 지정해야한다.
   const { isHover, msg } = useSelector((state: RootState) => ({
     ...state.hover,
   }));
