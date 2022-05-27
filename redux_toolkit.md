@@ -32,6 +32,8 @@ npm install @reduxjs/toolkit
 yarn add @reduxjs/toolkit
 ```
 
+---
+
 # RTK 키워드
 
 - configureStore()createStore: 단순화된 구성 옵션과 좋은 기본값을 제공하기 위해 래핑 합니다. 슬라이스 리듀서를 자동으로 결합하고, 제공하는 모든 Redux 미들웨어를 추가하고, redux-thunk기본적으로 포함하고, Redux DevTools Extension을 사용할 수 있습니다.
@@ -41,3 +43,192 @@ yarn add @reduxjs/toolkit
 - createAsyncThunk: 작업 유형 문자열과 약속을 반환하는 함수를 수락하고 pending/fulfilled/rejected해당 약속을 기반으로 작업 유형 을 전달하는 썽크를 생성합니다.
 - createEntityAdapter: 저장소에서 정규화된 데이터를 관리하기 위해 재사용 가능한 리듀서 및 선택기 세트를 생성합니다.
   Reselect 라이브러리 의 createSelector유틸리티 는 사용하기 쉽도록 다시 내보냅니다.
+
+---
+
+# RTK 예제
+
+이전 리덕스 문서에서 다루었던 예제를 RTK를 이용해 리팩토링 하는 과정을 기록했다.
+
+## modules/index.ts
+
+### 리팩토링 전
+
+```typescript
+import { combineReducers } from "redux";
+import hover from "./hover";
+
+const rootReducer = combineReducers({
+  hover,
+});
+
+export default rootReducer;
+export type RootState = ReturnType<typeof rootReducer>;
+```
+
+### 리팩토링 후
+
+```typescript
+import { configureStore } from "@reduxjs/toolkit";
+import hoverReducer from "../features/hover/hoverSlice";
+
+export const store = configureStore({
+  reducer: {
+    hover: hoverReducer,
+  },
+});
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+```
+
+## modules/hover.ts
+
+### 리팩토링 전
+
+```typescript
+const MOUSE_ENTER = "hover/MOUSE_ENTER" as const;
+const MOUSE_LEAVE = "hover/MOUSE_LEAVE" as const;
+
+export const mouseEnter = () => ({
+  type: MOUSE_ENTER,
+});
+
+export const mouseLeave = () => ({
+  type: MOUSE_LEAVE,
+});
+
+type hoverAction =
+  | ReturnType<typeof mouseEnter>
+  | ReturnType<typeof mouseLeave>;
+
+const initialState = {
+  isHover: false,
+  msg: "",
+};
+
+type hoverState = {
+  isHover: boolean;
+  msg: string;
+};
+
+const hover = (
+  state: hoverState = initialState,
+  action: hoverAction
+): hoverState => {
+  switch (action.type) {
+    case MOUSE_ENTER:
+      return {
+        isHover: true,
+        msg: "mouse enter!",
+      };
+    case MOUSE_LEAVE:
+      return {
+        isHover: false,
+        msg: "mouse leave!",
+      };
+    default:
+      return state;
+  }
+};
+
+export default hover;
+```
+
+### 리팩토링 후
+
+```typescript
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+export interface HoverState {
+  isActive: boolean;
+  msg: string;
+}
+
+const initialState: HoverState = {
+  isActive: false,
+  msg: "",
+};
+
+export const hoverSlice = createSlice({
+  name: "hover",
+  initialState,
+  reducers: {
+    mouseEnter: (state) => {
+      state.isActive = true;
+    },
+    mouseLeave: (state) => {
+      state.isActive = false;
+    },
+    memo: (state, action: PayloadAction<string>) => {
+      state.msg = action.payload;
+    },
+  },
+});
+
+export const { mouseEnter, mouseLeave, memo } = hoverSlice.actions;
+
+export default hoverSlice.reducer;
+```
+
+## components/test.tsx
+
+### 리팩토링 전
+
+```typescript
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../modules";
+import { mouseEnter, mouseLeave } from "../modules/hover";
+import styles from "./test.module.css";
+
+const Test = () => {
+  const { isHover, msg } = useSelector((state: RootState) => ({
+    ...state.hover,
+  }));
+  const dispatch = useDispatch();
+
+  const onMouseEnter = () => {
+    dispatch(mouseEnter());
+  };
+
+  const onMouseLeave = () => {
+    dispatch(mouseLeave());
+  };
+
+  return (
+    <div
+      className={styles.box}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    ></div>
+  );
+};
+
+export default React.memo(Test);
+```
+
+### 리팩토링 후
+
+```typescript
+import React from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
+import { mouseEnter, mouseLeave } from "./hoverSlice";
+
+const Hover = () => {
+  const isActive = useSelector((state: RootState) => state.hover.isActive);
+  const dispatch = useDispatch();
+  return (
+    <div
+      onMouseEnter={() => dispatch(mouseEnter())}
+      onMouseLeave={() => dispatch(mouseLeave())}
+    >
+      {isActive ? "on" : "off"}
+    </div>
+  );
+};
+
+export default Hover;
+```
