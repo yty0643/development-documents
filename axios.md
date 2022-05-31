@@ -61,7 +61,7 @@ Axios는 브라우저, Node.js를 위해서 만들어진 Promise API를 활요�
 - Axios는 상태가 200 이고 statusText가 'OK' 일 때 요청이 정상 입니다.
   > Fetch는 응답 객체에 ok 속성이 포함되어 있으면 요청이 정상 입니다.
 - Axios 는 JSON 데이터의 자동 변환을 수행합니다 .
-  > 응답에서 .json() 메서드를 호출합니다.
+  > Fetch는 응답에서 .json() 메서드를 호출합니다.
 - Axios는 요청 취소 및 요청 시간 초과를 허용 합니다.
   > Fetch는 허용하지 않습니다.
 - Axios에는 HTTP 요청을 가로챌 수 있는 기능이 있습니다.
