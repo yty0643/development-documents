@@ -1,6 +1,6 @@
 # 들어가며
 
-`cors.md`문서에서 다루었듯 CORS에러가 발생하면 해결하는 방법이 여러가지 있다.
+[CORS](https://github.com/yty0643/development-documents/blob/main/cors.md)문서에서 다루었듯 CORS에러가 발생하면 해결하는 방법이 여러가지 있다.
 그 중에서 proxy를 활용하는 방법을 기록하고자 한다.
 
 ---
