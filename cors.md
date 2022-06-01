@@ -12,8 +12,9 @@
 CORS 체제는 브라우저와 서버 간의 안전한 교차 출처 요청 및 데이터 전송을 지원한다. 최신 브라우저는 XMLHttpRequest 또는 Fetch와 같은 API에서 CORS를 사용하여 교차 출처 HTTP 요청의 위험을 완화한다.
 
 > HTML에서는 기본적으로 Cross-Origin-Resurce-Sharing 따름
+>
 > XMLHTTPRequest, Fetch API 등 script 태그 내에서는 Same-Origin-Policy 따름
-
+>
 > 옳바르지 않은 방법으로 다른 출처의 리소를 불러오려는 시도를 하면 다음과 같은 에러가 발생한다. (웹 개발자라면 누구나 한번쯤은 겪는 에러라고 생각한다.)
 >
 > Access to fetch at ‘https://...api.com/auth...’Visit Website from origin ‘http://localhost:3000’ has been blocked by CORS policy: No ‘Access-Control-Allow-Origin’ header is present on the requested resource. If an opaque response serves your needs, set the request’s mode to ‘no-cors’ to fetch the resource with CORS disabled.
