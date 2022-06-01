@@ -36,9 +36,8 @@ const box = () => {
       <span>{value}</span>
       <button onClick={() => setValue(value + 1)}>+</button>
     </div>
-  )
-}
-}
+  );
+};
 ```
 
 예제는 +, -버튼을 클릭하면 값이 1씩 증가 또는 감소하는 UI 기능을 포함하고 있다.
