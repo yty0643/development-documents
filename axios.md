@@ -71,4 +71,13 @@ Axios는 브라우저, Node.js를 위해서 만들어진 Promise API를 활요�
 - Axios는 광범위한 브라우저를 지원 합니다.
   > Fetch.AI는 Chrome 42 이상, Firefox 39 이상, Edge 14 이상 및 Safari 10.1 이상만 지원합니다(이를 이전 버전과의 호환성이라고 함).
 
+> ```bash
+> yarn add axios
+> ```
+>
+> @types/axios를 설치하려고 하면 아래와 같이 안내한다.
+> axios provides its own type definitions, so you don't need @types/axios installed!
+> axios는 자체적인 유형 정의를 제공하므로 @types/codos를 설치할 필요가 없습니다!
+> **즉, @types/axios를 따로 설치할 필요가 없다.**
+
 ---
