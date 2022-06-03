@@ -75,9 +75,72 @@ Axios는 브라우저, Node.js를 위해서 만들어진 Promise API를 활요�
 $ yarn add axios
 ```
 
-> @types/axios를 설치하려고 하면 아래와 같이 안내한다.
-> axios provides its own type definitions, so you don't need @types/axios installed!
-> axios는 자체적인 유형 정의를 제공하므로 @types/codos를 설치할 필요가 없습니다!
-> **즉, @types/axios를 따로 설치할 필요가 없다.**
+> @types/axios를 설치하려고 하면 다음과 같은 문구가 나온다. <br/>
+> axios provides its own type definitions, so you don't need @types/axios installed! <br/>
+> axios는 자체적인 유형 정의를 제공하므로 @types/codos를 설치할 필요가 없습니다! <br/> > **즉, @types/axios를 따로 설치할 필요가 없다.**
+
+### Axios 예제
+
+```typescript
+import axios from "axios";
+
+export default class Finance {
+  auth() {
+    // get method를 사용하는 가장 기본적인 형식이다.
+    const config = {
+      // url의 경우 필자는 proxy server를 사용중이라 origin은 작성하지 않는다.
+      url: "/v2.0/user/me",
+      method: "get",
+      data: {
+        foo: "diary",
+      },
+    };
+
+    axios(config);
+  }
+}
+```
+
+```typescript
+import axios from "axios";
+
+export default class Finance {
+  auth() {
+    // 다음과 같이 method를 분리하여 사용함으로써 더욱 직관적인 작성이 가능하다.
+    axios.get("/v2.0/user/me", {
+      params: {
+        user_seq_no: "1101007181",
+      },
+      headers: {
+        // "key": "value",
+      },
+    });
+  }
+}
+```
+
+```typescript
+import axios from "axios";
+
+export default class Finance {
+  // async/await을 사용하고 싶다면 다음과 같다.
+  async auth() {
+    try(
+      const res = await axios.get('/v2.0/user/me', {
+        params: {
+          'user_seq_no': '1101007181'
+        },
+        headers: {
+          // "key": "value",
+        }
+      });
+      console.log(res);
+    )catch(error){
+      console.log(error);
+    }
+  }
+}
+
+```
 
 ---
