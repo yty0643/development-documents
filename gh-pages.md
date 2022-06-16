@@ -17,6 +17,7 @@ $ yarn add gh-pages
 
 ```bash
 $ yarn bulid
+$ yarn deploy
 ```
 
 해당 깃허브 저장소에서 gh-pages 설정 바꿔주면 끝.
