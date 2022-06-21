@@ -1,4 +1,4 @@
-# NextJS
+b# NextJS
 
 ## NextJS란?
 
@@ -33,5 +33,5 @@ NextJS [공식문서](https://nextjs.org/docs/getting-started)에서 다음과 �
 
 다양한 기능이 있지만 NEXTJS를 사용하는 가장 큰 이유는 기존의 React로 개발 시 CSR로 인한 SEO문제가 발생하고 이를 해결하기 위해 많은 비용이 발생하는데 NextJS를 이용하면 쉽게 SSR로 개발할 수 있고 SEO문제를 해결할 수 있다는 점인것 같다.
 
-유투브로 NextJS를 검색하던 중 도움이 되는 강의를 발견했다.
-[노마드코더무료강의](https://nomadcoders.co/nextjs-fundamentals/lectures/3453)
+NextJS를 검색하던 중 도움이 될 강의를 발견했다.</br>
+[노마드코더NextJS](https://nomadcoders.co/nextjs-fundamentals/lectures/3453)
