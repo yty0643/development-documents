@@ -33,13 +33,13 @@ NextJS [공식문서](https://nextjs.org/docs/getting-started)에서 다음과 �
 - 서버리스 Functions를 사용하여 API엔드포인트를 빌드
 - 완전 확장 가능
 
-다양한 기능이 있지만 NEXTJS를 사용하는 가장 큰 이유는 기존의 React로 개발 시 CSR로 인한 SEO문제가 발생하고 이를 해결하기 위해 많은 비용이 발생하는데 NextJS를 이용하면 쉽게 SSR로 개발할 수 있고 SEO문제를 해결할 수 있다는 점인것 같다.
+다양한 기능이 있지만 NextJS를 사용하는 가장 큰 이유는 기존의 React로 개발 시 CSR로 인한 SEO문제가 발생하고 이를 해결하기 위해 많은 비용이 발생하는데 NextJS를 이용하면 쉽게 SSR로 개발할 수 있고 SEO문제를 해결할 수 있다는 점인것 같다.
 
 ---
 
 ## 참고문헌
 
-[공식문서](https://nextjs.org/docs/getting-started)
-[노마드코더NextJS](https://nomadcoders.co/nextjs-fundamentals/lectures/3453)
+- [공식문서](https://nextjs.org/docs/getting-started)
+- [노마드코더NextJS](https://nomadcoders.co/nextjs-fundamentals/lectures/3453)
 
 ---
