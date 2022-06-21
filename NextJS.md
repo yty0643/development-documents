@@ -1,4 +1,4 @@
-b# NextJS
+# NextJS
 
 ## NextJS란?
 
@@ -18,6 +18,8 @@ NextJS는 필요한 도구 및 구성을 처리하고 애플리케이션에 대�
 > - 확장성 - 팀, 데이터 및 트래픽이 증가함에 따라 애플리케이션이 조정되는 방식
 > - 개발자 경험 - 팀의 애플리케이션 구축 및 유지 관리 경험
 
+---
+
 ## NextJS 특징
 
 NextJS [공식문서](https://nextjs.org/docs/getting-started)에서 다음과 같이 설명하고 있다.
@@ -33,5 +35,11 @@ NextJS [공식문서](https://nextjs.org/docs/getting-started)에서 다음과 �
 
 다양한 기능이 있지만 NEXTJS를 사용하는 가장 큰 이유는 기존의 React로 개발 시 CSR로 인한 SEO문제가 발생하고 이를 해결하기 위해 많은 비용이 발생하는데 NextJS를 이용하면 쉽게 SSR로 개발할 수 있고 SEO문제를 해결할 수 있다는 점인것 같다.
 
-NextJS를 검색하던 중 도움이 될 강의를 발견했다.</br>
+---
+
+## 참고문헌
+
+[공식문서](https://nextjs.org/docs/getting-started)
 [노마드코더NextJS](https://nomadcoders.co/nextjs-fundamentals/lectures/3453)
+
+---
