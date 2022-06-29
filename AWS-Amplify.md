@@ -141,3 +141,31 @@ $ amplify push
 
 - Amazon API Gateway
 - AWS Lambda (express)
+
+#### AWS AppSync를 통한 API 연동
+
+- 실시간 데이터 동기화 기능이 제공되는 완전 관리형 GraphQL 서비스
+- 단일 엔드포인트로 GraphQL을 통해 데이터에 대한 CRUD가 가능
+- AppSync는 API 호출 요청에 따라 자동으로 Scaling
+- Cognito User Pool 과 연동되어 인증 받은 권한으로 API 수행이 가능
+
+AppSync를 이용한 GraphQL 이용시 다음과 같은 이점이 있다.
+
+- 관리형 서버리스 GraphQL 서비스
+- 데이터 소스에 대한 연결을 제공
+- 데이터 동기화, 실시간 데이터 접근 등 API 기능을 제공
+- AWS 서비스를 위한 GraphQL 인터페이스를 제공
+- IAM, Cognito, OIDC등 보안 Feature를 제공
+
+AppSync는 데이터스토어와 연동이 가능. (DynamoDB)
+
+- 어떤 규모에서도 10ms 미만의 성능을 제공하는 Key-value형태의 DB
+- 대규모 처리와 분산 환경에서의 성능 최적화
+- 사용한 만큼만 비용청구
+- 별도의 관리가 필요없는 서버리스 DB
+- AppSync의 데이터소스 형태로 연동이 가능
+
+Amplify DataStore
+
+- 디바이스에 저장되는 오프라인 스토리지를 제공한다.
+- 오프라인 스토리지는 온라인 상태로 전환 시 자동으로 동기화 된다.
