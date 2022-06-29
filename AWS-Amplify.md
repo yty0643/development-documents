@@ -6,11 +6,15 @@
 일반적인 비즈니스 로직 뿐만 아니라 분석 또는 상호작용, Machine Learning Prediction 등을 위한 어플이케이션의 구축도 가능하다.<br/>
 프레임워크에 대해서는 추가비용이 발생하지 않으며 사용한 AWS 서비스에 대해서만 비용을 지불한다. (호스팅 시 비용 발생)<br/>
 
+---
+
 ## AWS Amplify 구성 요소
 
 - CLI
 - Client Libs(IOS, Android, JS)
 - Amplify Console - CI/CD, Hosting
+
+---
 
 ## AWS Amplify 사용 과정
 
@@ -23,6 +27,8 @@
    - console에서 따로따로 작업 후 병합 가능
 3. App 에 연결
    - Amplify Lib 연결
+
+---
 
 ## AWS Amplify CLI
 
@@ -56,6 +62,8 @@ Distribution Directory Path :
 Build command :
 Start command :
 ```
+
+---
 
 ## Amplify를 이용한 인증 구현
 
@@ -93,3 +101,43 @@ Auth.signin("username", "userpassword");
 Auth.currentAuthenticatedUser();
 Auth.signOut();
 ```
+
+---
+
+## Amplify API (백엔드)
+
+일반적인 환경에서 웹 앱 백엔드 구성 시 고려해야 할 다음과 같은 사항을 서버리스 컨셉에 의해 상당부분 AWS의 도움을 받을 수 있고, 비즈니스 로직에 포커스를 맞춰서 진행할 수 있다.
+
+- ~~장애에 대한 복구~~
+- ~~로드 밸런싱~~
+- ~~웹 서버 스택~~
+- ~~어플리케이션 서버 스택~~
+- 비즈니스 로직
+
+### Amplify API 기술 스택
+
+<img width="850" alt="api" src="https://user-images.githubusercontent.com/80657819/176343543-4aeea8f4-9619-440d-a0b1-1fe5925b73bb.png">
+
+### Amplify 를 통한 API 접근 방식
+
+<img width="850" alt="접근방식" src="https://user-images.githubusercontent.com/80657819/176344821-c3d6479a-c372-43b0-a4fc-8b584a62b3cf.PNG">
+
+- REST API
+  > HTTP URL을 통해 경로를 나누고 URL에 맞는 리소스를 반환
+- GraphQL API
+  > 하나의 API 엔드포인트로 클라이언트가 데이터베이스에 직접 접근하여 효율적으로 작업을 처리할 수 있도록 하는 새로운 API 접근 방식 (Facebook)
+
+#### Amplify 기반의 REST API 배포
+
+```bash
+$ amplify add api
+# chose REST with Express backend
+# TODO: Code fucntion (함수 작업)
+$ amplify push
+# 배포완료
+```
+
+스택 구성
+
+- Amazon API Gateway
+- AWS Lambda (express)
